@@ -47,7 +47,7 @@ export class AuthService {
     return !!user;
   }
 
-  async logout(refreshString: string): Promise<boolean> {
+  async signout(refreshString: string): Promise<boolean> {
     const refreshToken = await this.retrieveRefreshToken(refreshString);
 
     if (!refreshToken) throw new UnauthorizedException();

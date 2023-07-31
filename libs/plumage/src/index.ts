@@ -1,1 +1,1 @@
-export * from './lib/plumage.module';
+export * from './lib/components';

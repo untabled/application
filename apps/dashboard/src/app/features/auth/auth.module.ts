@@ -6,9 +6,15 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { TextInputComponent } from '@untabled/plumage';
 
 @NgModule({
   declarations: [AuthComponent, SigninComponent, SignupComponent],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    TextInputComponent,
+  ],
 })
 export class AuthModule {}

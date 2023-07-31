@@ -3,6 +3,7 @@ import { AuthFacade, UsersFacade } from '../facades';
 import { UsersStore } from '../../store';
 import { SignIn } from '@untabled/types';
 import { switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,19 @@ export class AuthService {
 
   #usersStore = inject(UsersStore);
 
+  #router = inject(Router);
+
   signin(payload: SignIn) {
     return this.#authFacade.signin(payload).pipe(
-      switchMap(() => this.#usersFacade.me()),
-      tap((user) => this.#usersStore.setUser(user))
+      switchMap(() => this.loadUser()),
+      tap(() => this.#router.navigateByUrl('/dashboard'))
+    );
+  }
+
+  signout() {
+    return this.#authFacade.signout().pipe(
+      tap(() => this.#usersStore.setUser(null)),
+      tap(() => this.#router.navigateByUrl('/auth'))
     );
   }
 

@@ -1,2 +1,6 @@
 <p>dashboard works!</p>
 <router-outlet />
+
+<button (click)="signout()">Sign out</button>
+
+<pre class="bg-primary-900">{{ user$ | async | json }}</pre>

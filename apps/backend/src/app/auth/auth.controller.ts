@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Ip,
   Post,
   Req,
@@ -74,5 +75,25 @@ export class AuthController {
         expires: new Date(Date.now() + 15 * 60 * 1000),
       })
       .status(200);
+  }
+
+  @Delete('signout')
+  async signout(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response
+  ) {
+    await this.authService.signout(req.cookies.refresh_token);
+
+    res.clearCookie('access_token', {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax',
+    });
+    res.clearCookie('refresh_token', {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax',
+    });
+    res.status(200).json(true);
   }
 }

@@ -19,6 +19,12 @@ export class AuthFacade {
     });
   }
 
+  signout(): Observable<boolean> {
+    return this.#http.delete<boolean>('auth/signout', {
+      withCredentials: true,
+    });
+  }
+
   refresh(): Observable<void> {
     return this.#http.post<null>('auth/refresh', null, {
       withCredentials: true,
