@@ -25,4 +25,8 @@ export class AuthService {
       .me()
       .pipe(tap((user) => this.#usersStore.setUser(user)));
   }
+
+  refresh() {
+    return this.#authFacade.refresh();
+  }
 }
