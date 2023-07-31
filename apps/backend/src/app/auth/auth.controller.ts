@@ -42,7 +42,7 @@ export class AuthController {
       sameSite: 'lax',
       expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
     });
-    res.status(200);
+    res.status(200).json(true);
   }
 
   @Post('signup')

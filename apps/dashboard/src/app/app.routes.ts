@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { authenticatedGuard, notAuthenticatedGuard } from './core';
 
 export const appRoutes: Route[] = [
   {
@@ -8,18 +9,25 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'auth',
+    canActivate: [notAuthenticatedGuard],
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('./features/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule
-      ),
+    path: '',
+    canActivate: [authenticatedGuard],
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./features/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'dashboard',
   },
 ];

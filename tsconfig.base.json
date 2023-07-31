@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@untabled/plumage": ["libs/plumage/src/index.ts"],
       "@untabled/types": ["libs/types/src/index.ts"],
       "@untabled/utils": ["libs/utils/src/index.ts"]
     }
