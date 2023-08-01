@@ -16,13 +16,13 @@ import { NgIconComponent } from '@ng-icons/core';
 })
 export class IconComponent {
   @Input()
-  name = 'feather';
+  name? = 'feather';
 
   @Input()
   size = '16';
 
   @HostBinding('class')
   get classes() {
-    return 'flex mt-0.5';
+    return 'flex';
   }
 }

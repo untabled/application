@@ -46,6 +46,7 @@ export const TailwindTheme = {
   extend: {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+      serif: ['Gloock', 'serif'],
     },
   },
 };

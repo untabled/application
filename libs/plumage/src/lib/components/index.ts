@@ -3,3 +3,4 @@ export * from './input-description/input-description.component';
 export * from './input-info/input-info.component';
 export * from './input-label/input-label.component';
 export * from './icon/icon.component';
+export * from './menu-item/menu-item.component';

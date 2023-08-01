@@ -1,5 +1,9 @@
 import { Route } from '@angular/router';
-import { authenticatedGuard, notAuthenticatedGuard } from './core';
+import {
+  AppLayoutComponent,
+  authenticatedGuard,
+  notAuthenticatedGuard,
+} from './core';
 
 export const appRoutes: Route[] = [
   {
@@ -16,6 +20,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     canActivate: [authenticatedGuard],
+    component: AppLayoutComponent,
     children: [
       {
         path: 'dashboard',
