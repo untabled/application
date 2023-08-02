@@ -6,20 +6,20 @@ export class PermissionsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async validatePermissions({
-    projectId,
+    organizationId,
     userId,
   }: {
-    projectId: string;
+    organizationId: string;
     userId: string;
   }) {
-    // const userProject = await this.prisma.userProjects.findUnique({
-    //   where: {
-    //     projectId_userId: {
-    //       userId,
-    //       projectId,
-    //     },
-    //   },
-    // });
-    // if (!userProject) throw new NotFoundException();
+    const usersOrganizations = await this.prisma.usersOrganizations.findUnique({
+      where: {
+        userId_organizationId: {
+          organizationId,
+          userId,
+        },
+      },
+    });
+    if (!usersOrganizations) throw new NotFoundException();
   }
 }

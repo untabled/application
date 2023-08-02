@@ -37,6 +37,7 @@ model UsersOrganizations {
   userId         String
   organizationId String
 
+  @@unique([userId, organizationId])
   @@map("users_organizations")
 }
 
