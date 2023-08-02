@@ -39,7 +39,7 @@ export class SidebarComponent {
 
   @HostBinding('class')
   get classes() {
-    return 'fixed right-0 bottom-0 top-0 left-0 bg-neutral-200/50 shadow-md flex items-center justify-left';
+    return 'fixed right-0 bottom-0 top-0 left-0 bg-neutral-50/50 shadow-md flex items-center justify-left';
   }
 
   @HostListener('click')

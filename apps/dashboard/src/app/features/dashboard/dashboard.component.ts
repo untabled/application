@@ -1,18 +1,26 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UsersStore } from '../../store';
-import { AuthService } from '../../core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
+import { OrganizationsFacade } from '../../core';
+import { OrganizationsStore } from '../../store';
 
 @Component({
   selector: 'untabled-dashboard',
   templateUrl: './dashboard.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent {
-  user$ = inject(UsersStore).user$;
+export class DashboardComponent implements OnInit {
+  #organizationsFacade = inject(OrganizationsFacade);
+  #organizationsStore = inject(OrganizationsStore);
 
-  #authService = inject(AuthService);
+  organizations$ = this.#organizationsStore.entities$;
 
-  signout() {
-    this.#authService.signout().subscribe();
+  ngOnInit(): void {
+    this.#organizationsFacade
+      .get()
+      .subscribe((orgs) => this.#organizationsStore.set(orgs));
   }
 }
