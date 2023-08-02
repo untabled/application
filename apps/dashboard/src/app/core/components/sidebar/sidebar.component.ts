@@ -7,8 +7,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent, MenuItemComponent } from '@untabled/plumage';
-import { provideIcons } from '@ng-icons/core';
-import { ionPizza, ionFastFood, ionHome, ionClose } from '@ng-icons/ionicons';
 import { UiService } from '../../services';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -16,7 +14,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
   selector: 'untabled-sidebar',
   standalone: true,
   imports: [CommonModule, MenuItemComponent, IconComponent],
-  providers: [provideIcons({ ionPizza, ionFastFood, ionHome, ionClose })],
   animations: [
     trigger('enter', [
       transition(':enter', [

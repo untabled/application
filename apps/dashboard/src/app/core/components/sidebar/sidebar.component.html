@@ -11,13 +11,21 @@
       (click)="$event.stopPropagation(); toggleSidebar()"
       class="flex h-8 w-8 items-center justify-center rounded-md bg-white text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
     >
-      <untabled-icon name="ionClose" size="20" />
+      <untabled-icon [icon]="['fas', 'xmark']" />
     </button>
   </div>
 
   <nav class="mt-4 flex flex-col gap-0.5">
-    <untabled-menu-item link="dashboard" icon="ionHome" label="Dashboard" />
-    <untabled-menu-item link="as" icon="ionPizza" label="Pizza" />
-    <untabled-menu-item link="asddsa" icon="ionFastFood" label="Fastfood" />
+    <untabled-menu-item
+      link="dashboard"
+      [icon]="['far', 'user']"
+      label="Dashboard"
+    />
+    <untabled-menu-item link="as" [icon]="['far', 'lemon']" label="Pizza" />
+    <untabled-menu-item
+      link="asddsa"
+      [icon]="['far', 'futbol']"
+      label="Fastfood"
+    />
   </nav>
 </div>

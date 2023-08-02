@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tokens    Token[]
+  id                 String               @id @default(cuid())
+  name               String
+  email              String               @unique
+  password           String
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  tokens             Token[]
+  UsersOrganizations UsersOrganizations[]
 
   @@map("users")
 }
@@ -27,4 +28,24 @@ model Token {
   userId    String
 
   @@map("tokens")
+}
+
+model UsersOrganizations {
+  id             String       @id @default(cuid())
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String
+  organizationId String
+
+  @@map("users_organizations")
+}
+
+model Organization {
+  id                 String               @id @default(cuid())
+  name               String
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  UsersOrganizations UsersOrganizations[]
+
+  @@map("organizations")
 }

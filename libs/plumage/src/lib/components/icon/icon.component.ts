@@ -1,28 +1,16 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgIconComponent } from '@ng-icons/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'untabled-icon',
   standalone: true,
-  imports: [CommonModule, NgIconComponent],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './icon.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
   @Input()
-  name? = 'feather';
-
-  @Input()
-  size = '16';
-
-  @HostBinding('class')
-  get classes() {
-    return 'flex';
-  }
+  icon?: IconProp;
 }

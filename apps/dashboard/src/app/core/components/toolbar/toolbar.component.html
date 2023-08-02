@@ -3,7 +3,7 @@
     (click)="toggleSidebar()"
     class="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-100 text-neutral-900 transition-colors duration-75 hover:bg-neutral-50"
   >
-    <untabled-icon name="ionMenu" size="20" />
+    <untabled-icon [icon]="['fas', 'bars']" />
   </button>
 
   <span class="px-1 font-serif text-xl antialiased">Untabled</span>
@@ -14,6 +14,6 @@
     (click)="signout()"
     class="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-100 text-neutral-900 transition-colors duration-75 hover:bg-neutral-50"
   >
-    <untabled-icon name="ionExitOutline" size="20" />
+    <untabled-icon [icon]="['fas', 'right-from-bracket']" />
   </button>
 </div>
