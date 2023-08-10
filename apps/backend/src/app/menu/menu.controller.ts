@@ -1,34 +1,79 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Req,
+} from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
+import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { UserRequest } from '../auth/entities/user-request.entity';
 
-@Controller('menu')
+@ApiTags('menus')
+@Controller('organizations/:organizationId/menus')
 export class MenuController {
   constructor(private readonly menuService: MenuService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createMenuDto: CreateMenuDto) {
-    return this.menuService.create(createMenuDto);
+  create(
+    @Param('organizationId') organizationId: string,
+    @Req() req: UserRequest,
+    @Body() createMenuDto: CreateMenuDto
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.create(createMenuDto, organizationId, userId);
   }
 
   @Get()
-  findAll() {
-    return this.menuService.findAll();
+  findAll(
+    @Param('organizationId') organizationId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.findAll(organizationId, userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.menuService.findOne(+id);
+  findOne(
+    @Param('id') id: string,
+    @Param('organizationId') organizationId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.findOne(id, organizationId, userId);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
-    return this.menuService.update(+id, updateMenuDto);
+  update(
+    @Param('id') id: string,
+    @Param('organizationId') organizationId: string,
+    @Req() req: UserRequest,
+    @Body() updateMenuDto: UpdateMenuDto
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.update(id, updateMenuDto, organizationId, userId);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.menuService.remove(+id);
+  remove(
+    @Param('id') id: string,
+    @Param('organizationId') organizationId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.remove(id, organizationId, userId);
   }
 }

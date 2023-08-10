@@ -1,4 +1,11 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateMenuDto } from './create-menu.dto';
+import { IsNotEmpty, IsString } from '@nestjs/class-validator';
+import { UpdateMenu } from '@untabled/types';
 
-export class UpdateMenuDto extends PartialType(CreateMenuDto) {}
+export class UpdateMenuDto implements UpdateMenu {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsString()
+  description?: string;
+}

@@ -86,7 +86,7 @@ model Product {
 model Menu {
   id               String             @id @default(cuid())
   name             String
-  description      String
+  description      String?
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   organization     Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
