@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
 import { PrismaService } from '../utils/prisma/prisma.service';
@@ -61,6 +61,8 @@ export class OrganizationService {
         },
       },
     });
+
+    if (!usersOrganization) throw new NotFoundException();
 
     return usersOrganization.organization;
   }

@@ -29,6 +29,13 @@ export const appRoutes: Route[] = [
             (m) => m.DashboardModule
           ),
       },
+      {
+        path: 'organization/:id',
+        loadChildren: () =>
+          import('./features/organizations/organizations.module').then(
+            (m) => m.OrganizationsModule
+          ),
+      },
     ],
   },
   {

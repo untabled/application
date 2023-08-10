@@ -1,3 +1,10 @@
 <router-outlet />
 
-<pre>{{ organizations$ | async | json }}</pre>
+<div class="flex flex-col gap-2">
+  <a
+    *ngFor="let organization of organizations$ | async"
+    [routerLink]="'/organization/' + organization.id"
+  >
+    {{ organization.name }}
+  </a>
+</div>
