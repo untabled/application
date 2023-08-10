@@ -20,4 +20,10 @@ export class UiService {
     this.#sidebarOpen = !this.#sidebarOpen;
     this.#sidebarOpen$.next(this.#sidebarOpen);
   }
+
+  closeSidebar() {
+    this.#sidebarOpen = false;
+    this.#sidebarOpen$.next(false);
+    console.log('a');
+  }
 }

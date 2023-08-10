@@ -5,9 +5,10 @@ import { PrismaService } from '../utils/prisma/prisma.service';
 import { PermissionsService } from '../utils/permissions/permissions.service';
 import { Product } from '@untabled/types';
 
-const ProductSelect = {
+export const ProductSelect = {
   id: true,
   name: true,
+  description: true,
   categoryId: true,
 };
 

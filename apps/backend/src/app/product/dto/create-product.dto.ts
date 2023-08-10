@@ -7,6 +7,9 @@ export class CreateProductDto implements CreateProduct {
   name: string;
 
   @IsString()
+  description?: string;
+
+  @IsString()
   @IsNotEmpty()
   categoryId: string;
 }

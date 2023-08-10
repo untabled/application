@@ -12,7 +12,9 @@
   />
 
   <button
-    class="bg-primary-300 block w-full appearance-none rounded-md border-0 px-3 py-2 text-sm font-medium text-neutral-900 outline-none"
+    untabledButton="secondary"
+    [icon]="['far', 'lemon']"
+    [loading]="loading$ | async"
   >
     Inloggen
   </button>

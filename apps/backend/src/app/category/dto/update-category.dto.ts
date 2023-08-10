@@ -5,4 +5,7 @@ export class UpdateCategoryDto implements UpdateCategory {
   @IsString()
   @IsNotEmpty()
   name: string;
+
+  @IsString()
+  description?: string;
 }

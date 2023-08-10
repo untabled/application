@@ -5,9 +5,10 @@ import { PrismaService } from '../utils/prisma/prisma.service';
 import { PermissionsService } from '../utils/permissions/permissions.service';
 import { Category } from '@untabled/types';
 
-const CategorySelect = {
+export const CategorySelect = {
   id: true,
   name: true,
+  description: true,
 };
 
 @Injectable()

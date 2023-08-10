@@ -7,6 +7,9 @@ export class UpdateProductDto implements UpdateProduct {
   name: string;
 
   @IsString()
+  description?: string;
+
+  @IsString()
   @IsNotEmpty()
   categoryId: string;
 }

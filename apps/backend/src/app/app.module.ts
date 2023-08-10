@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { OrganizationModule } from './organization/organization.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
+import { MenuModule } from './menu/menu.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ProductModule } from './product/product.module';
     OrganizationModule,
     CategoryModule,
     ProductModule,
+    MenuModule,
   ],
   controllers: [],
   providers: [],

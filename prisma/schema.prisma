@@ -49,31 +49,70 @@ model Organization {
   usersOrganizations UsersOrganizations[]
   categories         Category[]
   products           Product[]
+  Menu               Menu[]
 
   @@map("organizations")
 }
 
 model Category {
-  id             String       @id @default(cuid())
-  name           String
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  organizationId String
-  products       Product[]
+  id               String             @id @default(cuid())
+  name             String
+  description      String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  organization     Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId   String
+  products         Product[]
+  CategoriesOnMenu CategoriesOnMenu[]
 
   @@map("categories")
 }
 
 model Product {
-  id             String       @id @default(cuid())
+  id             String           @id @default(cuid())
   name           String
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  category       Category     @relation(fields: [categoryId], references: [id])
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  description    String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  category       Category?        @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String
-  categoryId     String
+  categoryId     String?
+  ProductsOnMenu ProductsOnMenu[]
 
   @@map("products")
+}
+
+model Menu {
+  id               String             @id @default(cuid())
+  name             String
+  description      String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  organization     Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId   String
+  productsOnMenu   ProductsOnMenu[]
+  categoriesOnMenu CategoriesOnMenu[]
+
+  @@map("menus")
+}
+
+model CategoriesOnMenu {
+  menu       Menu     @relation(fields: [menuId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+  menuId     String
+  categoryId String
+
+  @@unique([menuId, categoryId])
+  @@map("categories_on_menu")
+}
+
+model ProductsOnMenu {
+  menu      Menu    @relation(fields: [menuId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+  menuId    String
+  productId String
+
+  @@unique([menuId, productId])
+  @@map("procuts_on_menu")
 }

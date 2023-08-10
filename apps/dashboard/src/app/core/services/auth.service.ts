@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { AuthFacade, UsersFacade } from '../facades';
 import { UsersStore } from '../../store';
 import { SignIn } from '@untabled/types';
-import { switchMap, tap } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -25,6 +25,7 @@ export class AuthService {
 
   signout() {
     return this.#authFacade.signout().pipe(
+      catchError(() => of(null)),
       tap(() => this.#usersStore.setUser(null)),
       tap(() => this.#router.navigateByUrl('/auth'))
     );

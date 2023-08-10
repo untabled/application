@@ -4,4 +4,7 @@ export class CreateCategoryDto implements CreateCategoryDto {
   @IsString()
   @IsNotEmpty()
   name: string;
+
+  @IsString()
+  description?: string;
 }

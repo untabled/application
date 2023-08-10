@@ -7,10 +7,12 @@ export type Product = Omit<
 
 export interface CreateProduct {
   name: string;
+  description?: string;
   categoryId: string;
 }
 
 export interface UpdateProduct {
   name: string;
+  description?: string;
   categoryId: string;
 }
