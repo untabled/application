@@ -46,7 +46,34 @@ model Organization {
   name               String
   createdAt          DateTime             @default(now())
   updatedAt          DateTime             @updatedAt
-  UsersOrganizations UsersOrganizations[]
+  usersOrganizations UsersOrganizations[]
+  categories         Category[]
+  products           Product[]
 
   @@map("organizations")
+}
+
+model Category {
+  id             String       @id @default(cuid())
+  name           String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String
+  products       Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id             String       @id @default(cuid())
+  name           String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  category       Category     @relation(fields: [categoryId], references: [id])
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String
+  categoryId     String
+
+  @@map("products")
 }

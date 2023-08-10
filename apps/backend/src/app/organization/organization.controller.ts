@@ -28,6 +28,7 @@ export class OrganizationController {
     @Body() createOrganizationDto: CreateOrganizationDto
   ) {
     const { userId } = req.user;
+
     return this.organizationService.create(createOrganizationDto, userId);
   }
 

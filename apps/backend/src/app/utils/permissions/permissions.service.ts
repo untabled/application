@@ -20,6 +20,7 @@ export class PermissionsService {
         },
       },
     });
+
     if (!usersOrganizations) throw new NotFoundException();
   }
 }

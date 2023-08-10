@@ -25,7 +25,7 @@ export class OrganizationService {
       select: OrganizationSelect,
       data: {
         ...createOrganizationDto,
-        UsersOrganizations: {
+        usersOrganizations: {
           create: [
             {
               userId,
@@ -40,7 +40,7 @@ export class OrganizationService {
     return this.prisma.organization.findMany({
       select: OrganizationSelect,
       where: {
-        UsersOrganizations: {
+        usersOrganizations: {
           some: { userId },
         },
       },
