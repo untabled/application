@@ -14,13 +14,21 @@ export class OrganizationsFacade {
   #http = inject(HttpService);
 
   post(payload: CreateOrganization): Observable<Organization> {
-    return this.#http.post('organizations', payload, { withCredentials: true });
+    return this.#http.post<CreateOrganization, Organization>(
+      'organizations',
+      payload,
+      { withCredentials: true }
+    );
   }
 
   patch(id: string, payload: UpdateOrganization): Observable<Organization> {
-    return this.#http.patch(`organizations/${id}`, payload, {
-      withCredentials: true,
-    });
+    return this.#http.patch<UpdateOrganization, Organization>(
+      `organizations/${id}`,
+      payload,
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   get(): Observable<Organization[]> {
