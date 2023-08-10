@@ -33,6 +33,7 @@ export class MenuController {
     return this.menuService.create(createMenuDto, organizationId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(
     @Param('organizationId') organizationId: string,
@@ -43,6 +44,7 @@ export class MenuController {
     return this.menuService.findAll(organizationId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(
     @Param('id') id: string,
@@ -54,6 +56,7 @@ export class MenuController {
     return this.menuService.findOne(id, organizationId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -66,6 +69,7 @@ export class MenuController {
     return this.menuService.update(id, updateMenuDto, organizationId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(
     @Param('id') id: string,
