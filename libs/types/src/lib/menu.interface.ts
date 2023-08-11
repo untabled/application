@@ -1,20 +1,13 @@
-import { Menu as MenuModel } from '@prisma/client';
-import { Product } from './product.interface';
-import { Category } from './category.interface';
+import {
+  Menu as MenuModel,
+  ProductsOnMenu as ProductsOnMenuModel,
+  CategoriesOnMenu as CategoriesOnMenuModel,
+} from '@prisma/client';
 
 export type Menu = Omit<
   MenuModel,
   'createdAt' | 'updatedAt' | 'organizationId'
 >;
-
-export interface CompleteMenu extends Menu {
-  productsOnMenu: {
-    product: Product;
-  }[];
-  categoriesOnMenu: {
-    category: Category;
-  }[];
-}
 
 export interface CreateMenu {
   name: string;
@@ -24,3 +17,7 @@ export interface UpdateMenu {
   name: string;
   description?: string;
 }
+
+export type ProductsOnMenu = ProductsOnMenuModel;
+
+export type CategoriesOnMeny = CategoriesOnMenuModel;

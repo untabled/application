@@ -80,4 +80,90 @@ export class MenuController {
 
     return this.menuService.remove(id, organizationId, userId);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/products/:productId')
+  addProduct(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Param('productId') productId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.addProduct(id, productId, organizationId, userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id/products/:productId')
+  removeProduct(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Param('productId') productId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.removeProduct(
+      id,
+      productId,
+      organizationId,
+      userId
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/products')
+  listProducts(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.listProducts(id, organizationId, userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/categories/:categoryId')
+  addCategory(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Param('categoryId') categoryId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.addCategory(id, categoryId, organizationId, userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id/categories/:categoryId')
+  removeCategory(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Param('categoryId') categoryId: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.removeCategory(
+      id,
+      categoryId,
+      organizationId,
+      userId
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/categories')
+  listCategories(
+    @Param('organizationId') organizationId: string,
+    @Param('id') id: string,
+    @Req() req: UserRequest
+  ) {
+    const { userId } = req.user;
+
+    return this.menuService.listCategories(id, organizationId, userId);
+  }
 }

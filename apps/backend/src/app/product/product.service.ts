@@ -34,7 +34,7 @@ export class ProductService {
 
     if (!category)
       throw new NotFoundException(
-        `No category found with id ${createProductDto.categoryId}`
+        `Category ${createProductDto.categoryId} not found`
       );
 
     return this.prisma.product.create({
@@ -96,7 +96,7 @@ export class ProductService {
 
     if (!category)
       throw new NotFoundException(
-        `No category found with id ${updateProductDto.categoryId}`
+        `Category ${updateProductDto.categoryId} not found`
       );
 
     return this.prisma.product.update({
