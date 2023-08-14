@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build:backend": "nx run backend:build:production",
-    "start:backend": "node dist/apps/backend/main.js"
+    "start:backend": "node dist/apps/backend/main.js",
+    "build:dashboard": "nx run dashboard:build:production"
   },
   "private": true,
   "dependencies": {
