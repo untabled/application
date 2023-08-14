@@ -2,7 +2,10 @@
   "name": "@untabled/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:backend": "nx run backend:build:production",
+    "start:backend": "node dist/apps/backend/main.js"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.1.0",

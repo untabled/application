@@ -6,10 +6,14 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
+  console.log(process.env.NODE_ENV);
   const app = await NestFactory.create(AppModule, {
     cors: {
       credentials: true,
-      origin: ['http://localhost:4200', 'http://localhost:4201'],
+      origin:
+        process.env.NODE_ENV === 'development'
+          ? ['http://localhost:4200', 'http://localhost:4201']
+          : ['http://localhost:4200', 'http://localhost:4201'],
     },
   });
   const globalPrefix = 'api';
