@@ -10,9 +10,9 @@ async function bootstrap() {
     cors: {
       credentials: true,
       origin:
-        process.env.NODE_ENV === 'production'
-          ? ['http://localhost:4200', 'http://localhost:4201']
-          : ['http://localhost:4200', 'http://localhost:4201'],
+        process.env.NODE_ENV === 'development'
+          ? ['http://localhost:4200']
+          : ['https://application-untabled.vercel.app'],
     },
   });
   const globalPrefix = 'api';
