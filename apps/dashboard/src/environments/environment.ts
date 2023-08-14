@@ -5,5 +5,5 @@ export interface Environment {
 
 export const environment: Environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api',
+  apiUrl: 'https://application-production-2d99.up.railway.app/api',
 };
