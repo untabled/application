@@ -6,7 +6,6 @@ import { BehaviorSubject, tap } from 'rxjs';
 @Component({
   selector: 'untabled-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SigninComponent {
