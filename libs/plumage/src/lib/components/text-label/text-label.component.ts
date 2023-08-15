@@ -24,6 +24,6 @@ export class TextLabelComponent {
 
   @HostBinding('class')
   get classes() {
-    return 'inline-flex items-center gap-2';
+    return 'inline-flex items-center gap-2 whitespace-nowrap';
   }
 }

@@ -18,24 +18,12 @@ import { Subscription, filter, tap } from 'rxjs';
   selector: 'untabled-sidebar',
   standalone: true,
   imports: [CommonModule, MenuItemComponent, IconComponent],
-  animations: [
-    trigger('enter', [
-      transition(':enter', [
-        style({
-          transform: 'translateX(-100%)',
-        }),
-        animate(150),
-      ]),
-    ]),
-  ],
   templateUrl: './sidebar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   #uiService = inject(UiService);
   #router = inject(Router);
-
-  sidebarOpen$ = this.#uiService.sidebarOpen$;
 
   readonly #subscriptions = new Subscription();
 
@@ -46,7 +34,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   @HostBinding('class')
   get classes() {
-    return 'fixed right-0 bottom-0 top-0 left-0 bg-neutral-100/50 shadow-md flex items-center justify-left';
+    return 'fixed w-full lg:bg-transparent bg-neutral-100/50 backdrop-blur-sm lg:w-[16rem] lg:block h-screen';
   }
 
   ngOnInit(): void {
@@ -59,7 +47,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   @HostListener('click')
   onClick() {
-    console.log('click');
     this.closeSidebar();
   }
 

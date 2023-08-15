@@ -6,3 +6,4 @@ export * from './icon/icon.component';
 export * from './menu-item/menu-item.component';
 export * from './button/button.component';
 export * from './text-label/text-label.component';
+export * from './card/card.component';

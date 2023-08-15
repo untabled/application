@@ -1,15 +1,13 @@
 <div
-  *ngIf="sidebarOpen$ | async"
+  class="h-full w-[16rem] border-r border-r-neutral-100 bg-white p-4"
   (click)="$event.stopPropagation()"
-  class="h-screen w-[16rem] rounded-r-3xl bg-white p-4 drop-shadow-xl"
-  @enter
 >
   <div class="flex w-full items-center justify-between">
     <span class="px-1 font-serif text-xl antialiased">Untabled</span>
 
     <button
       (click)="$event.stopPropagation(); closeSidebar()"
-      class="flex h-8 w-8 items-center justify-center rounded-md bg-white text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
+      class="flex h-8 w-8 items-center justify-center rounded-md bg-white text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900 lg:hidden"
     >
       <untabled-icon [icon]="['fas', 'xmark']" />
     </button>
@@ -18,14 +16,8 @@
   <nav class="mt-4 flex flex-col gap-0.5">
     <untabled-menu-item
       link="dashboard"
-      [icon]="['far', 'user']"
+      [icon]="['far', 'map']"
       label="Dashboard"
-    />
-    <untabled-menu-item link="as" [icon]="['far', 'lemon']" label="Pizza" />
-    <untabled-menu-item
-      link="asddsa"
-      [icon]="['far', 'futbol']"
-      label="Fastfood"
     />
   </nav>
 </div>

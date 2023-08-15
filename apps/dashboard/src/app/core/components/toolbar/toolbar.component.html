@@ -1,19 +1,10 @@
 <div class="flex items-center gap-4">
   <button
-    (click)="toggleSidebar()"
+    (click)="openSidebar()"
     class="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-100 text-neutral-900 transition-colors duration-75 hover:bg-neutral-50"
   >
     <untabled-icon [icon]="['fas', 'bars']" />
   </button>
 
   <span class="font-serif text-xl antialiased">Untabled</span>
-</div>
-
-<div class="flex items-center gap-4">
-  <button
-    (click)="signout()"
-    class="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-100 text-neutral-900 transition-colors duration-75 hover:bg-neutral-50"
-  >
-    <untabled-icon [icon]="['fas', 'right-from-bracket']" />
-  </button>
 </div>

@@ -16,14 +16,13 @@ export class UiService {
     return this.#sidebarOpen$.asObservable();
   }
 
-  toggleSidebar() {
-    this.#sidebarOpen = !this.#sidebarOpen;
-    this.#sidebarOpen$.next(this.#sidebarOpen);
+  openSidebar() {
+    this.#sidebarOpen = true;
+    this.#sidebarOpen$.next(true);
   }
 
   closeSidebar() {
     this.#sidebarOpen = false;
     this.#sidebarOpen$.next(false);
-    console.log('a');
   }
 }

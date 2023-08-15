@@ -21,11 +21,11 @@ export class ToolbarComponent {
 
   @HostBinding('class')
   get classes() {
-    return 'w-full border-b border-neutral-50 block h-16 flex items-center justify-between px-8';
+    return 'w-full border-b border-neutral-50 block h-16 flex items-center justify-between px-4 lg:hidden';
   }
 
-  toggleSidebar() {
-    this.#uiService.toggleSidebar();
+  openSidebar() {
+    this.#uiService.openSidebar();
   }
 
   signout() {

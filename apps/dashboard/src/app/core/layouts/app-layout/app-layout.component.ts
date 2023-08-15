@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent, ToolbarComponent } from '../../components';
 import { RouterOutlet } from '@angular/router';
@@ -10,4 +10,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppLayoutComponent {}
+export class AppLayoutComponent {
+  @HostBinding('class')
+  get classes() {
+    return 'block h-screen';
+  }
+}
