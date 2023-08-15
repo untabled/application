@@ -3,6 +3,13 @@ import { PrismaService } from '../utils/prisma/prisma.service';
 import { User } from '@untabled/types';
 import { User as PrismaUser } from '@prisma/client';
 
+const UserSelect = {
+  id: true,
+  firstName: true,
+  lastName: true,
+  email: true,
+};
+
 @Injectable()
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
@@ -23,13 +30,9 @@ export class UserService {
 
   async findOne(id: string): Promise<User | undefined> {
     const user = await this.prisma.user.findUnique({
+      select: UserSelect,
       where: {
         id: id,
-      },
-      select: {
-        id: true,
-        name: true,
-        email: true,
       },
     });
 
