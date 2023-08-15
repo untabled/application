@@ -22,12 +22,16 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error) => {
         if (
-          (error instanceof HttpErrorResponse &&
-            !request.url.includes('auth/signin')) ||
-          (!request.url.includes('auth/refresh') && error.status === 401)
+          error instanceof HttpErrorResponse &&
+          error.status === 401 &&
+          !(
+            request.url.includes('auth/signin') ||
+            request.url.includes('auth/refresh')
+          )
         ) {
           return this.#handle401Error(request, next);
         }
+        console.log(request.url);
 
         return throwError(() => error);
       })

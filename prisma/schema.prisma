@@ -98,21 +98,21 @@ model Menu {
 }
 
 model CategoriesOnMenu {
-  menu       Menu     @relation(fields: [menuId], references: [id])
-  category   Category @relation(fields: [categoryId], references: [id])
+  menu       Menu     @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   menuId     String
   categoryId String
 
-  @@unique([menuId, categoryId])
+  @@id([menuId, categoryId])
   @@map("categories_on_menu")
 }
 
 model ProductsOnMenu {
-  menu      Menu    @relation(fields: [menuId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
+  menu      Menu    @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   menuId    String
   productId String
 
-  @@unique([menuId, productId])
+  @@id([menuId, productId])
   @@map("procuts_on_menu")
 }

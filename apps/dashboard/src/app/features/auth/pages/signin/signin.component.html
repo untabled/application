@@ -1,21 +1,39 @@
-<form class="w-96 space-y-4 p-8" (submit)="$event.preventDefault(); submit()">
+<h1 class="text-2xl font-semibold">Welkom terug!</h1>
+<p class="mt-2 text-sm text-neutral-600">
+  Geef uw inloggegevens op om u aan te melden bij uw account.
+</p>
+
+<form
+  class="mt-8 flex flex-col gap-2"
+  (submit)="$event.preventDefault(); submit()"
+>
   <untabled-text-input
     [control]="form.controls.email"
     type="email"
+    placeholder="you@domain.com"
     label="Email"
   />
+
   <untabled-text-input
     [control]="form.controls.password"
     type="password"
     label="Wachtwoord"
-    info="Password must contain at least 8 characters and 1 special character."
+    placeholder="••••••••"
   />
 
   <button
-    untabledButton="secondary"
+    class="mt-4"
+    untabledButton="primary"
     [icon]="['far', 'lemon']"
     [loading]="loading$ | async"
   >
     Inloggen
   </button>
 </form>
+
+<span class="mt-4 block text-sm text-neutral-600"
+  >Nog geen account?
+  <a routerLink="/auth/signup" class="text-primary-700 font-medium"
+    >Aanmelden</a
+  ></span
+>

@@ -36,6 +36,9 @@ export class TextInputComponent {
   description?: string;
 
   @Input()
+  placeholder?: string;
+
+  @Input()
   info?: string;
 
   @Input()

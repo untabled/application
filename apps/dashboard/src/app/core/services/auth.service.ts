@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { AuthFacade, UsersFacade } from '../facades';
 import { UsersStore } from '../../store';
-import { SignIn } from '@untabled/types';
+import { SignIn, SignUp } from '@untabled/types';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,12 @@ export class AuthService {
       switchMap(() => this.loadUser()),
       tap(() => this.#router.navigateByUrl('/dashboard'))
     );
+  }
+
+  signup(payload: SignUp) {
+    return this.#authFacade
+      .signup(payload)
+      .pipe(tap(() => this.#router.navigateByUrl('/auth/signin')));
   }
 
   signout() {
