@@ -4,7 +4,7 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { OrganizationsFacade } from '../../core';
+import { OrganizationsService } from '../../core';
 import { OrganizationsStore } from '../../store';
 
 @Component({
@@ -13,14 +13,12 @@ import { OrganizationsStore } from '../../store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
-  #organizationsFacade = inject(OrganizationsFacade);
+  #organizationsService = inject(OrganizationsService);
   #organizationsStore = inject(OrganizationsStore);
 
   organizations$ = this.#organizationsStore.entities$;
 
   ngOnInit(): void {
-    this.#organizationsFacade
-      .get()
-      .subscribe((orgs) => this.#organizationsStore.set(orgs));
+    this.#organizationsService.fetchOrganizations().subscribe();
   }
 }

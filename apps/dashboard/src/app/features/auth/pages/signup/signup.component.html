@@ -8,9 +8,15 @@
   (submit)="$event.preventDefault(); submit()"
 >
   <untabled-text-input
-    [control]="form.controls.name"
-    label="Name"
-    placeholder="Hoe mogen wij jou noemen?"
+    [control]="form.controls.firstName"
+    label="Voornaam"
+    placeholder="Jan"
+  />
+
+  <untabled-text-input
+    [control]="form.controls.lastName"
+    label="Achternaam"
+    placeholder="Jansen"
   />
 
   <untabled-text-input

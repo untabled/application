@@ -15,7 +15,8 @@ export class SignupComponent {
 
   form = new FormGroup({
     email: new FormControl<string>('', { nonNullable: true }),
-    name: new FormControl<string>('', { nonNullable: true }),
+    firstName: new FormControl<string>('', { nonNullable: true }),
+    lastName: new FormControl<string>('', { nonNullable: true }),
     password: new FormControl<string>('', { nonNullable: true }),
   });
 
