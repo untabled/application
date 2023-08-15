@@ -8,16 +8,16 @@
   (submit)="$event.preventDefault(); submit()"
 >
   <untabled-text-input
+    [control]="form.controls.name"
+    label="Name"
+    placeholder="Hoe mogen wij jou noemen?"
+  />
+
+  <untabled-text-input
     [control]="form.controls.email"
     type="email"
     placeholder="you@domain.com"
     label="Email"
-  />
-
-  <untabled-text-input
-    [control]="form.controls.name"
-    label="Name"
-    placeholder="Hoe mogen wij jou noemen?"
   />
 
   <untabled-text-input
