@@ -1,0 +1,11 @@
+<div
+  class="fixed left-[16rem] top-0 h-screen w-[16rem] border-r border-r-neutral-100 bg-white p-4"
+>
+  <nav class="flex flex-col gap-0.5">
+    <untabled-menu-item
+      *ngFor="let category of categories$ | async"
+      [link]="category.id"
+      [label]="category.name"
+    />
+  </nav>
+</div>

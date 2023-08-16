@@ -3,13 +3,13 @@ import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { PrismaService } from '../utils/prisma/prisma.service';
 import { PermissionsService } from '../utils/permissions/permissions.service';
-import { Menu, ProductsOnMenu } from '@untabled/types';
-import { CategoriesOnMenu } from '@prisma/client';
+import { Menu } from '@untabled/types';
 
 const MenuSelect = {
   id: true,
   name: true,
   description: true,
+  published: true,
 };
 
 @Injectable()
@@ -54,9 +54,7 @@ export class MenuService {
     await this.permissions.validatePermissions({ organizationId, userId });
 
     const menu = await this.prisma.menu.findUnique({
-      select: {
-        ...MenuSelect,
-      },
+      select: MenuSelect,
       where: {
         id,
       },

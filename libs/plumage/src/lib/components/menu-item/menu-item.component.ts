@@ -21,11 +21,14 @@ export class MenuItemComponent {
   @Input({ required: true })
   label!: string;
 
-  @Input({ required: true })
+  @Input()
   link?: string;
 
   @Input()
   icon?: IconProp;
+
+  @Input()
+  prefix?: string;
 
   @Output()
   clicked = new EventEmitter<void>();

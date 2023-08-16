@@ -1,0 +1,27 @@
+<untabled-menu-item
+  *ngIf="item"
+  [link]="item.link"
+  [icon]="item.icon"
+  [label]="item.label"
+  (clicked)="item.children && toggle()"
+>
+  <untabled-icon
+    *ngIf="item.children"
+    [icon]="['fas', 'chevron-down']"
+    class="ml-auto"
+    [rotate]="expanded ? 180 : undefined"
+  />
+</untabled-menu-item>
+
+<ng-container *ngIf="expanded && item?.children">
+  <div class="ml-8 mt-0.5 flex flex-col gap-0.5">
+    <untabled-menu-item
+      *ngFor="let child of item?.children"
+      [prefix]="item?.prefix"
+      [link]="child.link"
+      [icon]="child.icon"
+      [label]="child.label"
+    >
+    </untabled-menu-item>
+  </div>
+</ng-container>

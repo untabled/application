@@ -51,6 +51,7 @@ model Organization {
   categories         Category[]
   products           Product[]
   Menu               Menu[]
+  Location           Location[]
 
   @@map("organizations")
 }
@@ -88,12 +89,14 @@ model Menu {
   id               String             @id @default(cuid())
   name             String
   description      String?
+  published        Boolean?           @default(false)
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   organization     Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId   String
   productsOnMenu   ProductsOnMenu[]
   categoriesOnMenu CategoriesOnMenu[]
+  menusLocations   MenusLocations[]
 
   @@map("menus")
 }
@@ -116,4 +119,28 @@ model ProductsOnMenu {
 
   @@id([menuId, productId])
   @@map("procuts_on_menu")
+}
+
+model Location {
+  id             String           @id @default(cuid())
+  name           String
+  description    String?
+  published      Boolean?         @default(false)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String
+  menusLocations MenusLocations[]
+
+  @@map("locations")
+}
+
+model MenusLocations {
+  menu       Menu     @relation(fields: [menuId], references: [id])
+  location   Location @relation(fields: [locationId], references: [id])
+  menuId     String
+  locationId String
+
+  @@id([menuId, locationId])
+  @@map("menus_locations")
 }

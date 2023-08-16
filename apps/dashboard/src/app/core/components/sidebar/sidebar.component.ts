@@ -9,23 +9,25 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconComponent, MenuItemComponent } from '@untabled/plumage';
+import { IconComponent } from '@untabled/plumage';
 import { UiService } from '../../services';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter, tap } from 'rxjs';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { SidebarItemComponent } from './sidebar-item/sidebar-item.component';
 
 export interface SidebarItem {
   link?: string;
   label: string;
   icon: IconProp;
+  prefix?: string;
   children?: SidebarItem[];
 }
 
 @Component({
   selector: 'untabled-sidebar',
   standalone: true,
-  imports: [CommonModule, MenuItemComponent, IconComponent],
+  imports: [CommonModule, IconComponent, SidebarItemComponent],
   templateUrl: './sidebar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

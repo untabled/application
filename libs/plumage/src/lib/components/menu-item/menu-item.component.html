@@ -1,22 +1,26 @@
 <a
   *ngIf="link; else button"
-  [routerLink]="link"
+  [routerLink]="prefix ? prefix + '/' + link : link"
   class="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
   routerLinkActive="text-neutral-900 bg-neutral-100"
   (click)="clicked.emit()"
 >
-  <untabled-icon [icon]="icon" />
-
-  <span>{{ label }}</span>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
 <ng-template #button>
   <button
-    class="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
+    class="flex w-full items-center gap-3 rounded-md px-4 py-2 text-sm text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
     (click)="clicked.emit()"
   >
-    <untabled-icon [icon]="icon" />
-
-    <span>{{ label }}</span>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
   </button>
+</ng-template>
+
+<ng-template #content>
+  <untabled-icon [icon]="icon" />
+
+  <span>{{ label }}</span>
+
+  <ng-content></ng-content>
 </ng-template>

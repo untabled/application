@@ -14,9 +14,26 @@ const OrganizationConfig: SidebarItem[] = [
     icon: ['far', 'map'],
   },
   {
-    link: 'menus',
     label: "Menu's",
     icon: ['far', 'lemon'],
+    prefix: 'menus',
+    children: [
+      {
+        link: 'cards',
+        label: 'Menukaarten',
+        icon: ['far', 'map'],
+      },
+      {
+        link: 'products',
+        label: 'Producten',
+        icon: ['far', 'lemon'],
+      },
+      {
+        link: 'categories',
+        label: 'Categorieën',
+        icon: ['far', 'map'],
+      },
+    ],
   },
 ];
 

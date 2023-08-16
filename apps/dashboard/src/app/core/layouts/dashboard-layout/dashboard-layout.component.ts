@@ -9,12 +9,12 @@ import { RouterOutlet } from '@angular/router';
 
 const DashboardConfig: SidebarItem[] = [
   {
-    link: 'dashboard',
+    link: '../dashboard',
     label: 'Dashboard',
     icon: ['far', 'map'],
   },
   {
-    link: 'profile',
+    link: '../profile',
     label: 'Profiel',
     icon: ['far', 'address-card'],
   },

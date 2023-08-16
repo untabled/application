@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconProp, RotateProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'untabled-icon',
@@ -13,4 +13,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 export class IconComponent {
   @Input()
   icon?: IconProp;
+
+  @Input()
+  rotate?: RotateProp;
 }

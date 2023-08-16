@@ -13,7 +13,6 @@ import {
 } from '../../../../core';
 import { map, switchMap } from 'rxjs';
 import { Organization } from '@untabled/types';
-import { MenusStore } from '../../../../store';
 
 @Component({
   selector: 'untabled-menu',
@@ -25,15 +24,6 @@ export class MenuComponent implements OnInit {
   #categoriesService = inject(CategoriesService);
   #productsService = inject(ProductsService);
   #organizationsService = inject(OrganizationsService);
-
-  #menusStore = inject(MenusStore);
-
-  readonly menus$ = this.#menusStore.entities$;
-
-  @HostBinding('class')
-  get classes() {
-    return 'flex';
-  }
 
   ngOnInit(): void {
     this.#fetchMenus();

@@ -4,6 +4,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { activeOrganizationResolver } from '../../core';
 import { MenuEditorComponent } from './components/menu-editor/menu-editor.component';
+import { CardsComponent } from './pages/cards/cards.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 const routes: Routes = [
   {
@@ -16,7 +19,27 @@ const routes: Routes = [
         component: MenuComponent,
         children: [
           {
-            path: ':menuId',
+            path: 'cards',
+            component: CardsComponent,
+          },
+          {
+            path: 'cards/:menuId',
+            component: MenuEditorComponent,
+          },
+          {
+            path: 'products',
+            component: ProductsComponent,
+          },
+          {
+            path: 'products/:productId',
+            component: MenuEditorComponent,
+          },
+          {
+            path: 'categories',
+            component: CategoriesComponent,
+          },
+          {
+            path: 'categories/:categoryId',
             component: MenuEditorComponent,
           },
         ],

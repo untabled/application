@@ -14,11 +14,6 @@
   </div>
 
   <nav class="mt-4 flex flex-col gap-0.5">
-    <untabled-menu-item
-      *ngFor="let item of items"
-      [link]="item.link"
-      [icon]="item.icon"
-      [label]="item.label"
-    />
+    <untabled-sidebar-item *ngFor="let item of items" [item]="item" />
   </nav>
 </div>
