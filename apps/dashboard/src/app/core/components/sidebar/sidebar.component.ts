@@ -3,6 +3,7 @@ import {
   Component,
   HostBinding,
   HostListener,
+  Input,
   OnDestroy,
   OnInit,
   inject,
@@ -10,9 +11,16 @@ import {
 import { CommonModule } from '@angular/common';
 import { IconComponent, MenuItemComponent } from '@untabled/plumage';
 import { UiService } from '../../services';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter, tap } from 'rxjs';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+export interface SidebarItem {
+  link?: string;
+  label: string;
+  icon: IconProp;
+  children?: SidebarItem[];
+}
 
 @Component({
   selector: 'untabled-sidebar',
@@ -24,6 +32,9 @@ import { Subscription, filter, tap } from 'rxjs';
 export class SidebarComponent implements OnInit, OnDestroy {
   #uiService = inject(UiService);
   #router = inject(Router);
+
+  @Input()
+  items?: SidebarItem[];
 
   readonly #subscriptions = new Subscription();
 

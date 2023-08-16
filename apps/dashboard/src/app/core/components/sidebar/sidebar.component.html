@@ -15,9 +15,10 @@
 
   <nav class="mt-4 flex flex-col gap-0.5">
     <untabled-menu-item
-      link="dashboard"
-      [icon]="['far', 'map']"
-      label="Dashboard"
+      *ngFor="let item of items"
+      [link]="item.link"
+      [icon]="item.icon"
+      [label]="item.label"
     />
   </nav>
 </div>

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import {
-  AppLayoutComponent,
+  DashboardLayoutComponent,
+  OrganizationLayoutComponent,
   authenticatedGuard,
   notAuthenticatedGuard,
 } from './core';
@@ -20,17 +21,18 @@ export const appRoutes: Route[] = [
   {
     path: '',
     canActivate: [authenticatedGuard],
-    component: AppLayoutComponent,
     children: [
       {
         path: 'dashboard',
+        component: DashboardLayoutComponent,
         loadChildren: () =>
           import('./features/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
           ),
       },
       {
-        path: 'organization/:id',
+        path: ':id',
+        component: OrganizationLayoutComponent,
         loadChildren: () =>
           import('./features/organizations/organizations.module').then(
             (m) => m.OrganizationsModule

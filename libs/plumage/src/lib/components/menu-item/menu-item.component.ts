@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
@@ -16,8 +22,11 @@ export class MenuItemComponent {
   label!: string;
 
   @Input({ required: true })
-  link!: string;
+  link?: string;
 
   @Input()
   icon?: IconProp;
+
+  @Output()
+  clicked = new EventEmitter<void>();
 }

@@ -3,8 +3,6 @@ import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { PrismaService } from '../utils/prisma/prisma.service';
 import { PermissionsService } from '../utils/permissions/permissions.service';
-import { ProductSelect } from '../product/product.service';
-import { CategorySelect } from '../category/category.service';
 import { Menu, ProductsOnMenu } from '@untabled/types';
 import { CategoriesOnMenu } from '@prisma/client';
 
@@ -123,7 +121,7 @@ export class MenuService {
     productId: string,
     organizationId: string,
     userId: string
-  ): Promise<ProductsOnMenu> {
+  ): Promise<{ productId: string }> {
     await this.permissions.validatePermissions({ organizationId, userId });
 
     const menu = await this.prisma.menu.findUnique({
@@ -144,6 +142,9 @@ export class MenuService {
       throw new NotFoundException(`Product ${productId} doesn't exist`);
 
     return this.prisma.productsOnMenu.create({
+      select: {
+        productId: true,
+      },
       data: {
         menuId,
         productId,
@@ -192,7 +193,11 @@ export class MenuService {
     return true;
   }
 
-  async listProducts(menuId: string, organizationId: string, userId: string) {
+  async listProducts(
+    menuId: string,
+    organizationId: string,
+    userId: string
+  ): Promise<{ productId: string }[]> {
     await this.permissions.validatePermissions({ organizationId, userId });
 
     const menu = await this.prisma.menu.findUnique({
@@ -218,7 +223,7 @@ export class MenuService {
     categoryId: string,
     organizationId: string,
     userId: string
-  ): Promise<CategoriesOnMenu> {
+  ): Promise<{ categoryId: string }> {
     await this.permissions.validatePermissions({ organizationId, userId });
 
     const menu = await this.prisma.menu.findUnique({
@@ -239,6 +244,7 @@ export class MenuService {
       throw new NotFoundException(`Category ${categoryId} doesn't exist`);
 
     return this.prisma.categoriesOnMenu.create({
+      select: { categoryId: true },
       data: {
         menuId,
         categoryId,
@@ -288,7 +294,11 @@ export class MenuService {
     return true;
   }
 
-  async listCategories(menuId: string, organizationId: string, userId: string) {
+  async listCategories(
+    menuId: string,
+    organizationId: string,
+    userId: string
+  ): Promise<{ categoryId: string }[]> {
     await this.permissions.validatePermissions({ organizationId, userId });
 
     const menu = await this.prisma.menu.findUnique({

@@ -18,7 +18,7 @@ export class EntityStore<Entity extends { id: string }> {
 
   byId$ = (id: string) =>
     this.entities$.pipe(
-      map((entities) => entities?.find((entity) => entity.id === id))
+      map((entities) => entities?.find((entity) => entity.id === id) ?? null)
     );
 
   set(entities: Entity[]) {

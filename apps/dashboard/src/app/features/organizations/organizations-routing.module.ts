@@ -1,13 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrganizationsComponent } from './organizations.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { activeOrganizationResolver } from '../../core';
+import { MenuEditorComponent } from './components/menu-editor/menu-editor.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: OrganizationsComponent,
-    children: [{ path: '', component: DashboardComponent }],
+    resolve: { activeOrganization: activeOrganizationResolver },
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'menus',
+        component: MenuComponent,
+        children: [
+          {
+            path: ':menuId',
+            component: MenuEditorComponent,
+          },
+        ],
+      },
+      {
+        path: '**',
+        redirectTo: 'dashboard',
+      },
+    ],
   },
 ];
 

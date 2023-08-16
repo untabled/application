@@ -31,7 +31,6 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
         ) {
           return this.#handle401Error(request, next);
         }
-        console.log(request.url);
 
         return throwError(() => error);
       })

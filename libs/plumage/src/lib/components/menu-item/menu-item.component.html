@@ -1,9 +1,22 @@
 <a
+  *ngIf="link; else button"
   [routerLink]="link"
   class="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
   routerLinkActive="text-neutral-900 bg-neutral-100"
+  (click)="clicked.emit()"
 >
   <untabled-icon [icon]="icon" />
 
   <span>{{ label }}</span>
 </a>
+
+<ng-template #button>
+  <button
+    class="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-neutral-600 transition-colors duration-75 hover:bg-neutral-100 hover:text-neutral-900"
+    (click)="clicked.emit()"
+  >
+    <untabled-icon [icon]="icon" />
+
+    <span>{{ label }}</span>
+  </button>
+</ng-template>

@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { OrganizationsRoutingModule } from './organizations-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { OrganizationsComponent } from './organizations.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { MenuItemComponent } from '@untabled/plumage';
+import { MenuEditorComponent } from './components/menu-editor/menu-editor.component';
 
 @NgModule({
-  declarations: [OrganizationsComponent, DashboardComponent],
-  imports: [CommonModule, OrganizationsRoutingModule],
+  declarations: [DashboardComponent, MenuComponent, MenuEditorComponent],
+  imports: [CommonModule, OrganizationsRoutingModule, MenuItemComponent],
 })
 export class OrganizationsModule {}

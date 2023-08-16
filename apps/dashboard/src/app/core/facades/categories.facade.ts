@@ -50,4 +50,13 @@ export class CategoriesFacade {
       }
     );
   }
+
+  delete(id: string, organizationId: string): Observable<boolean> {
+    return this.#http.delete<boolean>(
+      `organizations/${organizationId}/categories/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
 export class CardComponent {
   @HostBinding('class')
   get classes() {
-    return 'rounded-lg border border-neutral-100 p-4 block';
+    return 'rounded-lg p-4 block bg-white ring-1 ring-neutral-900/10 shadow';
   }
 }

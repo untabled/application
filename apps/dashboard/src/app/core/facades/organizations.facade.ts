@@ -42,4 +42,10 @@ export class OrganizationsFacade {
       withCredentials: true,
     });
   }
+
+  delete(id: string): Observable<boolean> {
+    return this.#http.delete<boolean>(`organizations/${id}`, {
+      withCredentials: true,
+    });
+  }
 }
